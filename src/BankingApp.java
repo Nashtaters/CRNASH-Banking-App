@@ -15,6 +15,7 @@ public class BankingApp extends JFrame implements ActionListener {
     private JTextField _input = null;
     private JButton _submit = null;
     private Account _account = new Account(1000);
+    private boolean _isDeposit = false;
 
     public static void main(String[] args) {
 
@@ -59,16 +60,19 @@ public class BankingApp extends JFrame implements ActionListener {
         _widgetPanel.setLayout(new FlowLayout());
         _display.add(_widgetPanel, gbc);
 
-        _prompt = new JLabel("Enter amount to withdraw: ");
+        _prompt = new JLabel("Welcome to this Automated Teller Machine");
 
         _input = new JTextField("");
         _input.setPreferredSize(new Dimension(100, 25));
         _submit = new JButton("Submit");
-        _widgetPanel.setVisible(false);
+        _submit.addActionListener(this);
 
         _widgetPanel.add(_prompt);
         _widgetPanel.add(_input);
         _widgetPanel.add(_submit);
+
+        _input.setVisible(false);
+        _submit.setVisible(false);
 
         setLayout(new BorderLayout());
         add(buttonPanel, BorderLayout.WEST);
@@ -83,8 +87,9 @@ public class BankingApp extends JFrame implements ActionListener {
         JButton button = (JButton)e.getSource();
         if (button == _withdraw) {
             performWithdrawal();
-        }
-        else if (button == _deposit) {
+        } else if (button == _submit) {
+            handleSubmit();
+        } else if (button == _deposit) {
         }
         else if (button == _balance){
         }
@@ -93,6 +98,24 @@ public class BankingApp extends JFrame implements ActionListener {
         }
     }
     protected void performWithdrawal() {
-        _widgetPanel.setVisible(true);
+        _prompt.setText("Enter amount to withdraw: ");
+        _input.setVisible(true);
+        _submit.setVisible(true);
+        _input.requestFocus();
+    }
+
+    protected void handleSubmit() {
+        String stringAmount = _input.getText();
+        float amount = Float.parseFloat(stringAmount);
+        if (_isDeposit == true){
+            
+        }
+        else {
+            float balance = _account.withdraw(amount);
+            _input.setVisible(false);
+            _submit.setVisible(false);
+            _prompt.setText("New balance is $" + balance);
+            _input.setText("");
+        }
     }
 }
