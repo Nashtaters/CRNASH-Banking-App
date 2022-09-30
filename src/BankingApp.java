@@ -90,32 +90,53 @@ public class BankingApp extends JFrame implements ActionListener {
         } else if (button == _submit) {
             handleSubmit();
         } else if (button == _deposit) {
+            performDeposit();
         }
         else if (button == _balance){
+            checkBalance();
         }
         else if (button == _exit) {
             System.exit(0);
         }
     }
     protected void performWithdrawal() {
+        _isDeposit = false;
         _prompt.setText("Enter amount to withdraw: ");
         _input.setVisible(true);
         _submit.setVisible(true);
         _input.requestFocus();
     }
 
+    protected void performDeposit() {
+        _isDeposit = true;
+        _prompt.setText("Enter amount to deposit: ");
+        _input.setVisible(true);
+        _submit.setVisible(true);
+        _input.requestFocus();
+    }
+
+    protected void checkBalance() {
+        float balance = _account.getBalance();
+        String formatBalance = String.format("%.02f", balance);
+        _prompt.setText("Current balance is $" + formatBalance);
+    }
+
     protected void handleSubmit() {
         String stringAmount = _input.getText();
         float amount = Float.parseFloat(stringAmount);
+        float balance = 0.0f;
         if (_isDeposit == true){
-            
-        }
-        else {
-            float balance = _account.withdraw(amount);
+            balance = _account.deposit(amount);
             _input.setVisible(false);
             _submit.setVisible(false);
-            _prompt.setText("New balance is $" + balance);
-            _input.setText("");
         }
+        else {
+            balance = _account.withdraw(amount);
+            _input.setVisible(false);
+            _submit.setVisible(false);
+        }
+        String formatBalance = String.format("%.02f", balance);
+        _prompt.setText("New balance is $" + formatBalance);
+        _input.setText("");
     }
 }
