@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 public class BankingApp extends JFrame implements ActionListener {
 
     private JButton _withdraw = null;
+    private JButton _deposit = null;
+    private JButton _balance = null;
     private JButton _exit = null;
     private JTextArea _display = null;
 
@@ -22,16 +24,22 @@ public class BankingApp extends JFrame implements ActionListener {
         setTitle("Banking App");
         setVisible(true);
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setMaximumSize(new Dimension(200, 400));
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 1));
 
         _withdraw = new JButton("Withdraw");
         _withdraw.setAlignmentX(Component.LEFT_ALIGNMENT);
         _withdraw.addActionListener(this);
         buttonPanel.add(_withdraw);
 
-        //TODO: Make deposit and check balance buttons
+        _deposit = new JButton("Deposit");
+        _deposit.setAlignmentX(Component.LEFT_ALIGNMENT);
+        _deposit.addActionListener(this);
+        buttonPanel.add(_deposit);
+
+        _balance = new JButton("Check Balance");
+        _balance.setAlignmentX(Component.LEFT_ALIGNMENT);
+        _balance.addActionListener(this);
+        buttonPanel.add(_balance);
 
         _exit = new JButton("Exit");
         _exit.setAlignmentX(Component.LEFT_ALIGNMENT);
