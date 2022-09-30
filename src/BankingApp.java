@@ -10,6 +10,8 @@ public class BankingApp extends JFrame implements ActionListener {
     private JButton _balance = null;
     private JButton _exit = null;
     private JTextArea _display = null;
+    private JTextField _withdrawInput = null;
+    private Account _account = new Account(1000);
 
     public static void main(String[] args) {
 
@@ -68,10 +70,19 @@ public class BankingApp extends JFrame implements ActionListener {
 
         if (button == _withdraw) {
             System.out.println("Enter amount to withdraw: ");
-        } else if (button == _exit) {
+            performWithrawl();
+        }
+        else if (button == _deposit){
+            System.out.println("Enter amount to deposit: ");
+        }
+        else if (button == _balance){
+            System.out.println("Your current balance is " + _account.getBalance());
+        }
+        else if (button == _exit) {
             System.exit(0);
         }
     }
+    protected float performWithrawl() {
+        return 0.0f;
+    }
 }
-
-// TODO: create account class, regular POJO class
