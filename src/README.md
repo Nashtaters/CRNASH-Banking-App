@@ -1,18 +1,18 @@
 # Overview
 
-{For this project I used the swing library in Java and I wanted to get more familiar with GUIs.}
+For this project I used the swing library in Java and I wanted to get more familiar with GUIs.
 
-{I wrote this banking app to show the user the amount of money in their account and the ability to withdraw and deposit money in their account.}
+I wrote this banking app to show the user the amount of money in their account and the ability to withdraw and deposit money in their account.
 
-{This was my first project in Java, I wanted to get a feel for the language better and I also wanted to learn more about the swing library.}
+This was my first project in Java, I wanted to get a feel for the language better and I also wanted to learn more about the swing library.
 
 [Software Demo Video](https://www.youtube.com/watch?v=ULg86oZDNXg)
 
 # Development Environment
 
-{I used the IntelliJ IDE while making this project.}
+I used the IntelliJ IDE while making this project.
 
-{Java was used with the swing library.}
+Java was used with the swing library.
 
 # Useful Websites
 
